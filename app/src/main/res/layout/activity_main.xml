@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- 동영상 재생 영역 -->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:use_controller="false"
+        app:resize_mode="fit"
+        android:visibility="gone" />
+
+    <!-- 이미지 재생 영역 -->
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        android:contentDescription="@null" />
+
+    <!-- 항상 화면에 표시되는 언어 선택 버튼 -->
+    <LinearLayout
+        android:id="@+id/lang_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
+        android:background="#66000000"
+        android:padding="8dp"
+        android:elevation="8dp">
+
+        <Button
+            android:id="@+id/btn_ko"
+            style="@style/LangButton"
+            android:text="@string/lang_ko" />
+
+        <Button
+            android:id="@+id/btn_en"
+            style="@style/LangButton"
+            android:text="@string/lang_en" />
+
+        <Button
+            android:id="@+id/btn_ja"
+            style="@style/LangButton"
+            android:text="@string/lang_ja" />
+
+        <Button
+            android:id="@+id/btn_zh"
+            style="@style/LangButton"
+            android:text="@string/lang_zh" />
+
+    </LinearLayout>
+
+    <!-- 개발/테스트용: 콘텐츠 폴더 경로 표시 (필요 없으면 삭제 가능) -->
+    <TextView
+        android:id="@+id/debug_path_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="8dp"
+        android:textColor="#AAFFFFFF"
+        android:textSize="10sp"
+        android:background="#44000000"
+        android:padding="4dp" />
+
+</FrameLayout>
