@@ -26,13 +26,11 @@ class MainActivity : AppCompatActivity() {
     private var currentLang: LanguageSlot = LanguageSlot.KO
     private var currentSceneIndex: Int = 0
 
-    // 이미지 씬 재생 시간 관리용
     private val imageHandler = Handler(Looper.getMainLooper())
     private var imageAdvanceRunnable: Runnable? = null
     private var imageSceneElapsedAtStartMs: Long = 0L
     private var imageSceneStartedAtRealtimeMs: Long = 0L
 
-    // 이미지 한 장당 재생 시간(밀리초). 필요에 맞게 조정.
     private val defaultImageDurationMs = 5000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,13 +38,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 키오스크/사이니지 용도 - 화면 꺼짐 방지
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         contentManager = ContentManager(this)
         contentManager.ensureFolders()
-
-        binding.debugPathText.text = "콘텐츠 폴더: ${contentManager.rootDir.absolutePath}"
 
         player = ExoPlayer.Builder(this).build()
         binding.playerView.player = player
@@ -98,9 +93,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /** 언어 버튼 클릭 시: 현재 재생 위치(초)를 구해서 새 언어의 같은 씬으로 이어서 재생 */
     private fun switchLanguage(newLang: LanguageSlot) {
-        if (newLang == currentLang || scenes.isEmpty()) return
+        if (scenes.isEmpty()) return
         val elapsedMs = getCurrentElapsedMs()
         currentLang = newLang
         highlightCurrentLanguageButton()
@@ -118,7 +112,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /** index 번째 씬을, seekMs 지점부터 현재 언어로 재생 */
     private fun playScene(index: Int, seekMs: Long) {
         cancelImageAdvance()
         if (scenes.isEmpty()) return
@@ -129,7 +122,6 @@ class MainActivity : AppCompatActivity() {
 
         val file = scene.filesBySlot[currentLang]
         if (file == null) {
-            // 현재 언어에 해당하는 파일이 없으면 다음 씬으로 넘어간다.
             advanceToNextScene()
             return
         }
@@ -145,6 +137,8 @@ class MainActivity : AppCompatActivity() {
         binding.imageView.visibility = View.GONE
         binding.playerView.visibility = View.VISIBLE
 
+        player.stop()
+        player.clearMediaItems()
         player.setMediaItem(MediaItem.fromUri(Uri.fromFile(file)))
         player.prepare()
         player.seekTo(seekMs.coerceAtLeast(0L))
