@@ -142,7 +142,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showVideo(file: File, seekMs: Long) {
-        Toast.makeText(this, "경로:${file.absolutePath}\n존재:${file.exists()}\n읽기:${file.canRead()}", Toast.LENGTH_LONG).show()
         binding.imageView.visibility = View.GONE
         binding.playerView.visibility = View.VISIBLE
 
