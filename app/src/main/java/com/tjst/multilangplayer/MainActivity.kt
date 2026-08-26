@@ -46,12 +46,15 @@ class MainActivity : AppCompatActivity() {
         player = ExoPlayer.Builder(this).build()
         binding.playerView.player = player
         player.addListener(object : Player.Listener {
-            override fun onPlaybackStateChanged(playbackState: Int) {
-                if (playbackState == Player.STATE_ENDED) {
-                    advanceToNextScene()
-                }
-            }
-        })
+    override fun onPlaybackStateChanged(playbackState: Int) {
+        if (playbackState == Player.STATE_ENDED) {
+            advanceToNextScene()
+        }
+    }
+    override fun onPlayerError(error: androidx.media3.common.PlaybackException) {
+        Toast.makeText(this@MainActivity, "오류: ${error.message}", Toast.LENGTH_LONG).show()
+    }
+})
 
         setupLanguageButtons()
 
