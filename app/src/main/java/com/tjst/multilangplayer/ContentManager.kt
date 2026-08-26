@@ -1,6 +1,7 @@
 package com.tjst.multilangplayer
 
 import android.content.Context
+import android.os.Environment
 import java.io.File
 
 /** 씬(콘텐츠 조각) 파일의 종류 */
@@ -19,8 +20,7 @@ data class Scene(
  * 콘텐츠 폴더(A/B/C/D)를 스캔해서 재생목록(Scene 리스트)을 만드는 클래스.
  *
  * 콘텐츠 루트 폴더 위치:
- *   context.getExternalFilesDir(null)  (예: /storage/emulated/0/Android/data/com.tjst.multilangplayer/files)
- *   앱 전용 저장소이므로 별도의 저장공간 권한(WRITE_EXTERNAL_STORAGE 등)이 필요 없다.
+ *   /storage/emulated/0/Download/MultiLangPlayer/
  *
  * 파일명 규칙: "<씬글자><언어숫자>.<확장자>"
  *   예: a1.mp4, b1.jpg, a2.mp4, b2.jpg ...
@@ -28,7 +28,7 @@ data class Scene(
  */
 class ContentManager(context: Context) {
 
-    val rootDir: File = context.getExternalFilesDir(null) ?: context.filesDir
+    val rootDir: File = File(Environment.getExternalStorageDirectory(), "Download/MultiLangPlayer")
 
     private val videoExtensions = setOf("mp4", "mkv", "mov", "webm", "3gp", "m4v")
     private val imageExtensions = setOf("jpg", "jpeg", "png", "webp", "bmp", "gif")
