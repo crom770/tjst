@@ -20,7 +20,7 @@
     </style>
 
     <style name="LangButtonCircle" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:backgroundTint">@null</item>
+        <item name="backgroundTint">@android:color/transparent</item>
         <item name="android:layout_width">@dimen/lang_button_size</item>
         <item name="android:layout_height">@dimen/lang_button_size</item>
         <item name="android:layout_marginBottom">@dimen/lang_button_spacing</item>
