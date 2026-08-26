@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity() {
 
         player.stop()
         player.clearMediaItems()
-        player.setMediaItem(MediaItem.fromUri(Uri.fromFile(file)))
+        player.setMediaItem(MediaItem.fromUri(file.toURI().toString()))
         player.prepare()
         player.seekTo(seekMs.coerceAtLeast(0L))
         player.playWhenReady = true
