@@ -31,25 +31,45 @@
         android:orientation="vertical"
         android:elevation="8dp">
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_ko"
-            style="@style/LangButtonCircle"
-            android:text="한" />
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/flag_ko"
+            android:scaleType="fitCenter"
+            android:background="@drawable/bg_lang_button"
+            android:contentDescription="한국어" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_en"
-            style="@style/LangButtonCircle"
-            android:text="EN" />
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/flag_en"
+            android:scaleType="fitCenter"
+            android:background="@drawable/bg_lang_button"
+            android:contentDescription="English" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_ja"
-            style="@style/LangButtonCircle"
-            android:text="日" />
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/flag_ja"
+            android:scaleType="fitCenter"
+            android:background="@drawable/bg_lang_button"
+            android:contentDescription="日本語" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_zh"
-            style="@style/LangButtonCircle"
-            android:text="中" />
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/flag_zh"
+            android:scaleType="fitCenter"
+            android:background="@drawable/bg_lang_button"
+            android:contentDescription="中文" />
 
     </LinearLayout>
 
