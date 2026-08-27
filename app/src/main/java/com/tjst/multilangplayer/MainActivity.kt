@@ -7,7 +7,7 @@ import android.os.Looper
 import android.os.SystemClock
 import android.view.View
 import android.view.WindowManager
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.media3.common.MediaItem
@@ -41,25 +41,27 @@ class MainActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         contentManager = ContentManager(this)
+
         if (android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.S_V2) {
-    if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
-        requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1)
-    }
-}
+            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1)
+            }
+        }
+
         contentManager.ensureFolders()
 
         player = ExoPlayer.Builder(this).build()
         binding.playerView.player = player
         player.addListener(object : Player.Listener {
-    override fun onPlaybackStateChanged(playbackState: Int) {
-        if (playbackState == Player.STATE_ENDED) {
-            advanceToNextScene()
-        }
-    }
-    override fun onPlayerError(error: androidx.media3.common.PlaybackException) {
-        Toast.makeText(this@MainActivity, "오류: ${error.message}", Toast.LENGTH_LONG).show()
-    }
-})
+            override fun onPlaybackStateChanged(playbackState: Int) {
+                if (playbackState == Player.STATE_ENDED) {
+                    advanceToNextScene()
+                }
+            }
+            override fun onPlayerError(error: androidx.media3.common.PlaybackException) {
+                Toast.makeText(this@MainActivity, "오류: ${error.message}", Toast.LENGTH_LONG).show()
+            }
+        })
 
         setupLanguageButtons()
 
@@ -77,20 +79,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupLanguageButtons() {
-        val buttons: Map<Button, LanguageSlot> = mapOf(
+        val buttons: Map<ImageButton, LanguageSlot> = mapOf(
             binding.btnKo to LanguageSlot.KO,
             binding.btnEn to LanguageSlot.EN,
             binding.btnJa to LanguageSlot.JA,
             binding.btnZh to LanguageSlot.ZH
         )
         buttons.forEach { (button, slot) ->
+            button.backgroundTintList = null
             button.setOnClickListener { switchLanguage(slot) }
         }
         highlightCurrentLanguageButton()
     }
 
     private fun highlightCurrentLanguageButton() {
-        val map: Map<LanguageSlot, Button> = mapOf(
+        val map: Map<LanguageSlot, ImageButton> = mapOf(
             LanguageSlot.KO to binding.btnKo,
             LanguageSlot.EN to binding.btnEn,
             LanguageSlot.JA to binding.btnJa,
