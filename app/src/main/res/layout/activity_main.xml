@@ -37,8 +37,9 @@
             android:layout_height="56dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/flag_ko"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:background="@drawable/bg_lang_button"
+            android:clipToOutline="true"
             android:contentDescription="한국어" />
 
         <ImageButton
@@ -47,8 +48,9 @@
             android:layout_height="56dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/flag_en"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:background="@drawable/bg_lang_button"
+            android:clipToOutline="true"
             android:contentDescription="English" />
 
         <ImageButton
@@ -57,8 +59,9 @@
             android:layout_height="56dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/flag_ja"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:background="@drawable/bg_lang_button"
+            android:clipToOutline="true"
             android:contentDescription="日本語" />
 
         <ImageButton
@@ -67,8 +70,9 @@
             android:layout_height="56dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/flag_zh"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:background="@drawable/bg_lang_button"
+            android:clipToOutline="true"
             android:contentDescription="中文" />
 
     </LinearLayout>
