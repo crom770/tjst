@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
+    <!-- 동영상 재생 영역
+         resize_mode 옵션: fit(비율 유지, 여백 발생 - 왜곡 없음/기본값),
+                           zoom(비율 유지, 화면 꽉 채움 - 가장자리 잘림),
+                           fill(화면 꽉 채움 - 원본 비율과 다르면 이미지가 눌리거나 늘어남)
+         1920x540 등 일반적이지 않은 비율의 스트레치드 디스플레이에서는 원본 영상 비율에 따라
+         좌우 여백(필러박스)이 크게 생길 수 있음. 실제 대상 디스플레이에서 확인 후 조정 필요. -->
     <androidx.media3.ui.PlayerView
         android:id="@+id/player_view"
         android:layout_width="match_parent"
@@ -13,6 +19,10 @@
         app:resize_mode="fit"
         android:visibility="gone" />
 
+    <!-- 이미지 재생 영역
+         scaleType 옵션: fitCenter(비율 유지, 여백 발생 - 기본값),
+                         centerCrop(비율 유지, 화면 꽉 채움 - 가장자리 잘림),
+                         fitXY(화면 꽉 채움 - 원본 비율과 다르면 눌리거나 늘어남) -->
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="match_parent"
@@ -21,6 +31,8 @@
         android:visibility="gone"
         android:contentDescription="@null" />
 
+    <!-- 항상 화면에 표시되는 언어 선택 버튼 (우측 상단, 원형, 세로 배치)
+         자막을 가리지 않도록 화면 중앙/하단이 아닌 우측 상단에 배치함 -->
     <LinearLayout
         android:id="@+id/lang_bar"
         android:layout_width="wrap_content"
