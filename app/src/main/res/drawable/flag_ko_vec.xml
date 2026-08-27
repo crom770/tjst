@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="90dp" android:height="60dp"
+    android:viewportWidth="90" android:viewportHeight="60">
+  <!-- 흰 배경 -->
+  <path android:fillColor="#FFFFFF" android:pathData="M0,0 H90 V60 H0 Z"/>
+  <!-- 태극 빨강(위) -->
+  <path android:fillColor="#CD2E3A"
+    android:pathData="M45,18 a12,12 0 0,1 0,24 a6,6 0 0,0 0,-12 a6,6 0 0,1 0,-12 Z"/>
+  <!-- 태극 파랑(아래) -->
+  <path android:fillColor="#003478"
+    android:pathData="M45,18 a12,12 0 0,0 0,24 a6,6 0 0,1 0,-12 a6,6 0 0,0 0,-12 Z"/>
+  <!-- 건(왼쪽위) 3줄 실선 -->
+  <path android:fillColor="#000000" android:strokeWidth="0"
+    android:pathData="M15,17 H26 V18.5 H15 Z M15,20.5 H26 V22 H15 Z M15,24 H26 V25.5 H15 Z"/>
+  <!-- 곤(오른쪽아래) 6줄 끊긴선 -->
+  <path android:fillColor="#000000"
+    android:pathData="M64,34.5 H69.5 V36 H64 Z M71,34.5 H76.5 V36 H71 Z
+                      M64,38 H69.5 V39.5 H64 Z M71,38 H76.5 V39.5 H71 Z
+                      M64,41.5 H69.5 V43 H64 Z M71,41.5 H76.5 V43 H71 Z"/>
+  <!-- 감(오른쪽위) 중간 실선 -->
+  <path android:fillColor="#000000"
+    android:pathData="M64,17 H69.5 V18.5 H64 Z M71,17 H76.5 V18.5 H71 Z
+                      M64,20.5 H76.5 V22 H64 Z
+                      M64,24 H69.5 V25.5 H64 Z M71,24 H76.5 V25.5 H71 Z"/>
+  <!-- 리(왼쪽아래) 중간 끊긴선 -->
+  <path android:fillColor="#000000"
+    android:pathData="M15,34.5 H26 V36 H15 Z
+                      M15,38 H20.5 V39.5 H15 Z M22,38 H26 V39.5 H22 Z
+                      M15,41.5 H26 V43 H15 Z"/>
+</vector>
